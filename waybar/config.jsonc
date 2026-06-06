@@ -11,6 +11,12 @@
     "cpu",
     "memory",
   ],
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "on-click": "hyprctl dispatch \"hl.dsp.focus({ workspace = {id} })\"",
+    "all-outputs": true,
+    "active-only": false,
+  },
   "hyprland/window": {
     "max-length": 50,
   },

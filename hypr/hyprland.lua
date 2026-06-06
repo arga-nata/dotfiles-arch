@@ -41,9 +41,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("waybar")
     hl.exec_cmd("wpaperd -d")
     hl.exec_cmd("playerctld daemon")
-    hl.exec_cmd("systemctl --user start hyprpolkitagent")
+    hl.exec_cmd("sleep 1 && /usr/lib/polkit-kde-authentication-agent-1 &")
     hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 24")
-    hl.exec_once("wpaperd")
 end)
 
 ---------------
@@ -119,8 +118,8 @@ hl.config({
         rounding         = 10,
         rounding_power   = 2,
 
-        active_opacity   = 1.0,
-        inactive_opacity = 1.0,
+        active_opacity   = 0.9,
+        inactive_opacity = 0.9,
 
         shadow           = {
             enabled      = true,
@@ -203,12 +202,14 @@ local secondMod = mainMod .. " + SHIFT"
 
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
-local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + M",
-    hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
+hl.bind("Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | wl-copy"))
+hl.bind(secondMod .. " + Print", hl.dsp.exec_cmd("grim ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind("ALT" .. " + Tab", hl.dsp.focus({ workspace = "previous" }))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("killall waybar && waybar &"))
