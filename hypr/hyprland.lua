@@ -39,9 +39,12 @@ local music       = "spotify"
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("waybar")
+    hl.exec_cmd("wpaperd -d")
+    hl.exec_cmd("playerctld daemon")
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
+    hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 24")
+    hl.exec_once("wpaperd")
 end)
-hl.exec_cmd("systemctl --user start hyprpolkitagent")
-hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 24")
 
 ---------------
 ---- INPUT ----
@@ -117,7 +120,7 @@ hl.config({
         rounding_power   = 2,
 
         active_opacity   = 1.0,
-        inactive_opacity = 0.85,
+        inactive_opacity = 1.0,
 
         shadow           = {
             enabled      = true,
