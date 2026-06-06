@@ -1,0 +1,6 @@
+[defaults]
+    path = "/home/woz/Pictures/Wallpapers/59919008_p0.png"
+    duration = "0s"
+
+    [eDP-1]
+    path = "/home/woz/Pictures/Wallpapers/59919008_p0.png"
