@@ -1,4 +1,5 @@
 {
   "Lua.diagnostics.globals": ["hl"],
-  "css.validate": false
+  "css.validate": false,
+  "files.autoSave": "off"
 }

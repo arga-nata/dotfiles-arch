@@ -6,7 +6,7 @@ hl.monitor({
     output   = "",
     mode     = "preferred",
     position = "auto",
-    scale    = "1.20",
+    scale    = "1.2",
 })
 
 -------------------------------
@@ -41,6 +41,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("waybar")
     hl.exec_cmd("wpaperd -d")
     hl.exec_cmd("playerctld daemon")
+    hl.exec_cmd("hypridle")
     hl.exec_cmd("sleep 1 && /usr/lib/polkit-kde-authentication-agent-1 &")
     hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 24")
 end)
@@ -118,8 +119,8 @@ hl.config({
         rounding         = 10,
         rounding_power   = 2,
 
-        active_opacity   = 0.9,
-        inactive_opacity = 0.9,
+        active_opacity   = 1,
+        inactive_opacity = 1,
 
         shadow           = {
             enabled      = true,
@@ -204,13 +205,16 @@ hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + M",
-hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+    hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
+hl.bind(secondMod .. " + D", hl.dsp.exec_cmd("rofi -show run"))
+
 hl.bind("Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | wl-copy"))
 hl.bind(secondMod .. " + Print", hl.dsp.exec_cmd("grim ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png"))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(secondMod .. " + P", hl.dsp.exec_cmd("~/scripts/display_cycle.sh"))
+
 hl.bind("ALT" .. " + Tab", hl.dsp.focus({ workspace = "previous" }))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("killall waybar && waybar &"))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
@@ -236,8 +240,8 @@ end
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(secondMod .. " + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e+1" }))
 
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
