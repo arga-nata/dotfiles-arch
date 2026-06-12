@@ -15,7 +15,8 @@ hl.monitor({
 
 hl.config({
     xwayland = {
-        force_zero_scaling = true
+        force_zero_scaling = true,
+        use_nearest_neighbor = false
     }
 })
 
@@ -37,10 +38,16 @@ local music       = "spotify"
 ---- AUTOSTART ----
 -------------------
 
+
 hl.on("hyprland.start", function()
+    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+    hl.exec_cmd("sleep 2 && /usr/lib/xdg-desktop-portal &")
+    hl.exec_cmd("sleep 2 && /usr/lib/xdg-desktop-portal-hyprland &")
+    hl.exec_cmd("sleep 2 && /usr/lib/xdg-desktop-portal-gtk &")
     hl.exec_cmd("waybar")
     hl.exec_cmd("wpaperd -d")
     hl.exec_cmd("playerctld daemon")
+    hl.exec_cmd("easyeffects --daemon")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("sleep 1 && /usr/lib/polkit-kde-authentication-agent-1 &")
     hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 24")
@@ -100,15 +107,16 @@ hl.device({
 
 hl.config({
     general = {
-        gaps_in          = 5,
-        gaps_out         = 10,
+        gaps_in     = 5,
+        gaps_out    = 10,
 
-        border_size      = 0,
+        border_size = 0,
 
-        col              = {
+        col         = {
             active_border   = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
             inactive_border = "rgba(595959aa)",
         },
+
 
         resize_on_border = false,
         allow_tearing    = false,
@@ -119,8 +127,8 @@ hl.config({
         rounding         = 10,
         rounding_power   = 2,
 
-        active_opacity   = 1,
-        inactive_opacity = 1,
+        active_opacity   = 0.95,
+        inactive_opacity = 0.9,
 
         shadow           = {
             enabled      = true,
@@ -191,6 +199,12 @@ hl.config({
     misc = {
         force_default_wallpaper = -1,
         disable_hyprland_logo   = false,
+    },
+})
+
+hl.config({
+    cursor = {
+        hide_on_key_press = true,
     },
 })
 
@@ -305,3 +319,6 @@ hl.window_rule({
 -- hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
 -- hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
 -- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
+
+-- Suppress maximize/fullscreen requests from Nautilus
+-- and disable all decorations, borders, and shadows

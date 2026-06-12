@@ -1,6 +1,7 @@
-[defaults]
-    path = "/home/woz/Pictures/Wallpapers/59919008_p0.png"
-    duration = "0s"
+[any]
+path = "~/Pictures/Wallpapers"
+duration = "5m"
+sorting = "ascending"
 
-    [eDP-1]
-    path = "/home/woz/Pictures/Wallpapers/59919008_p0.png"
+[default.transition.directional-wipe]
+direction = [1.0, 0.0]

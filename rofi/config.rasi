@@ -167,4 +167,4 @@ configuration {
   }
 }
 
-@theme "/home/woz/.local/share/rofi/themes/spotlight-dark.rasi"
+@theme "~/.local/share/rofi/themes/spotlight-dark.rasi"

@@ -1,33 +1,32 @@
-@define-color highlight rgba(117, 241, 250, 1);
-@define-color dark-9 rgba(24, 24, 27, 0.5);
-@define-color dark-8 rgba(39, 39, 42, 1);
-@define-color dark-7 rgba(63, 63, 70, 1);
-@define-color dark-6 rgba(82, 82, 91, 1);
-@define-color dark-5 rgba(113, 113, 122, 1);
+@define-color highlight rgba(255, 255, 255, 1);
+@define-color dark-9 rgba(0, 0, 0, 0.5);
+@define-color dark-8 rgba(20, 20, 20, 0.5);
+@define-color dark-7 rgba(40, 40, 40, 1);
+@define-color dark-6 rgba(70, 70, 70, 1);
+@define-color dark-5 rgba(110, 110, 110, 1);
 
 * {
-  /* `otf-font-awesome` is required to be installed for icons */
   font-family: JetBrainsMono Nerd Font Propo;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 window#waybar {
   background-color: @dark-9;
-  color: white;
+  color: @highlight;
 }
 
 #workspaces button {
   padding: 3px;
-  margin: 7px 7px 7px 7px;
+  margin: 7px;
   background: transparent;
   border-radius: 2px;
-  color: white;
+  color: @highlight;
 }
 
 #workspaces button.active {
   background: @highlight;
-  color: black;
-  font-weight: 700;
+  color: @dark-9;
+  font-weight: 600;
 }
 
 #submap,
@@ -41,12 +40,13 @@ window#waybar {
   padding: 5px 8px;
   background: @dark-8;
   margin: 5px 10px 5px 0px;
+  color: @highlight;
 }
 
 #submap,
 #workspaces button.urgent {
-  background: rgba(227, 81, 73, 1);
-  color: black;
+  background: @highlight;
+  color: @dark-9;
 }
 
 #pulseaudio-slider {
@@ -79,12 +79,12 @@ window#waybar {
 }
 
 #media {
-  color: #42ff9f;
+  color: @highlight;
   margin: 7px 0px 7px 80px;
 }
 
 #custom-media-animation {
-  font-size: 13px;
+  font-size: 14px;
   margin-right: 10px;
 }
 
@@ -100,8 +100,9 @@ window#waybar {
 tooltip {
   background: @dark-9;
   border-radius: 5px;
+  border: 1px solid @dark-7;
 }
 
 tooltip label {
-  color: white;
+  color: @highlight;
 }

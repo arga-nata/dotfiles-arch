@@ -51,7 +51,7 @@
   },
   "network": {
     "format": "",
-    "format-wifi": "",
+    "format-wifi": "",
     "format-ethernet": "",
     "format-disconnected": "󰤭", //An empty format will hide the module.
     "tooltip-format": "{ifname} via {gwaddr} 󰊗",
@@ -59,14 +59,14 @@
     "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "󰖪",
     "max-length": 50,
-    "on-click": "exec networkmanager_dmenu",
+    "on-click": "exec kitty --title=impala -e impala",
   },
   "clock": {
     "format": "󰥔 {:%a, %d. %b %I:%M %p}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "format": {
-        "today": "<span color='#75f1fa'><b>{}</b></span>",
+        "today": "<span color='#ffffff'><b>{}</b></span>",
       },
     },
     // "on-click": "exec firefox --app=https://calendar.google.com",
