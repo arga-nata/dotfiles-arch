@@ -73,13 +73,13 @@
   },
   "pulseaudio": {
     "format": "{volume}% {icon}",
-    "format-muted": "",
+    "format-muted": "0% ",
     "format-icons": {
       "default": ["", ""],
     },
     "scroll-step": 1,
     "ignored-sinks": ["Easy Effects Sink"],
-    "on-click": "pavucontrol",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
   },
   "pulseaudio/slider": {
     "min": 0,
